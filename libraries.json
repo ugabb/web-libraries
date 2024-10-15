@@ -1,0 +1,213 @@
+[
+    {
+      "name": "React",
+      "description": "A JavaScript library for building user interfaces.",
+      "image": "https://reactjs.org/logo-og.png",
+      "github_stars": 210000,
+      "github": "https://github.com/facebook/react",
+      "doc": "https://reactjs.org/docs/getting-started.html",
+      "example_code": "const element = <h1>Hello, world!</h1>;",
+      "tag": ["front end", "javascript"]
+    },
+    {
+      "name": "Vue.js",
+      "description": "The Progressive JavaScript Framework.",
+      "image": "https://vuejs.org/images/logo.png",
+      "github_stars": 204000,
+      "github": "https://github.com/vuejs/vue",
+      "doc": "https://vuejs.org/v2/guide/",
+      "example_code": "var app = new Vue({ el: '#app', data: { message: 'Hello Vue!' } });",
+      "tag": ["front end", "javascript"]
+    },
+    {
+      "name": "Angular",
+      "description": "A platform for building mobile and desktop web applications.",
+      "image": "https://angular.io/assets/images/logos/angular/angular.svg",
+      "github_stars": 89000,
+      "github": "https://github.com/angular/angular",
+      "doc": "https://angular.io/docs",
+      "example_code": "<h1>{{title}}</h1>",
+      "tag": ["front end", "typescript", "javascript"]
+    },
+    {
+      "name": "Next.js",
+      "description": "The React Framework for Production.",
+      "image": "https://nextjs.org/static/favicon/favicon.ico",
+      "github_stars": 110000,
+      "github": "https://github.com/vercel/next.js",
+      "doc": "https://nextjs.org/docs",
+      "example_code": "export default function Home() { return <h1>Hello Next.js</h1>; }",
+      "tag": ["front end", "back end", "javascript", "typescript"]
+    },
+    {
+      "name": "Svelte",
+      "description": "Cybernetically enhanced web apps.",
+      "image": "https://svelte.dev/svelte-logo-horizontal.svg",
+      "github_stars": 75000,
+      "github": "https://github.com/sveltejs/svelte",
+      "doc": "https://svelte.dev/docs",
+      "example_code": "<script> let name = 'world'; </script><h1>Hello {name}!</h1>",
+      "tag": ["front end", "javascript"]
+    },
+    {
+      "name": "Express",
+      "description": "Fast, unopinionated, minimalist web framework for Node.js.",
+      "image": "https://expressjs.com/images/express-facebook-share.png",
+      "github_stars": 60000,
+      "github": "https://github.com/expressjs/express",
+      "doc": "https://expressjs.com/en/starter/installing.html",
+      "example_code": "const app = require('express')(); app.get('/', (req, res) => res.send('Hello World!'));",
+      "tag": ["back end", "javascript", "node.js"]
+    },
+    {
+      "name": "Django",
+      "description": "The Web framework for perfectionists with deadlines.",
+      "image": "https://www.djangoproject.com/m/img/logos/django-logo-positive.png",
+      "github_stars": 69000,
+      "github": "https://github.com/django/django",
+      "doc": "https://docs.djangoproject.com/en/stable/",
+      "example_code": "def index(request): return HttpResponse('Hello, world!')",
+      "tag": ["back end", "python"]
+    },
+    {
+      "name": "Flask",
+      "description": "A lightweight WSGI web application framework for Python.",
+      "image": "https://flask.palletsprojects.com/en/2.0.x/_images/flask-logo.png",
+      "github_stars": 64000,
+      "github": "https://github.com/pallets/flask",
+      "doc": "https://flask.palletsprojects.com/en/2.0.x/",
+      "example_code": "from flask import Flask; app = Flask(__name__); @app.route('/') def hello(): return 'Hello, World!'",
+      "tag": ["back end", "python"]
+    },
+    {
+      "name": "Ruby on Rails",
+      "description": "Server-side web application framework written in Ruby.",
+      "image": "https://rubyonrails.org/assets/images/rails-logo.svg",
+      "github_stars": 53000,
+      "github": "https://github.com/rails/rails",
+      "doc": "https://guides.rubyonrails.org/",
+      "example_code": "class WelcomeController < ApplicationController def index render plain: 'Hello, world!' end end",
+      "tag": ["back end", "ruby"]
+    },
+    {
+      "name": "Spring Boot",
+      "description": "Spring Boot makes it easy to create stand-alone, production-grade Spring-based Applications.",
+      "image": "https://spring.io/img/icon-spring-boot.svg",
+      "github_stars": 72000,
+      "github": "https://github.com/spring-projects/spring-boot",
+      "doc": "https://spring.io/projects/spring-boot",
+      "example_code": "@SpringBootApplication public class Application { public static void main(String[] args) { SpringApplication.run(Application.class, args); } }",
+      "tag": ["back end", "java"]
+    },
+    {
+      "name": "Laravel",
+      "description": "A PHP framework for web artisans.",
+      "image": "https://laravel.com/img/logotype.min.svg",
+      "github_stars": 78000,
+      "github": "https://github.com/laravel/laravel",
+      "doc": "https://laravel.com/docs",
+      "example_code": "Route::get('/', function () { return view('welcome'); });",
+      "tag": ["back end", "php"]
+    },
+    {
+      "name": "ASP.NET Core",
+      "description": "A cross-platform, high-performance framework for building modern, cloud-based web apps.",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/e/ee/.NET_Core_Logo.svg",
+      "github_stars": 34000,
+      "github": "https://github.com/dotnet/aspnetcore",
+      "doc": "https://docs.microsoft.com/en-us/aspnet/core/",
+      "example_code": "app.MapGet(\"/\", () => \"Hello World!\");",
+      "tag": ["back end", "c#", ".net"]
+    },
+    {
+      "name": "Nuxt.js",
+      "description": "The Intuitive Vue Framework.",
+      "image": "https://nuxtjs.org/logos/nuxt-icon.png",
+      "github_stars": 44000,
+      "github": "https://github.com/nuxt/nuxt.js",
+      "doc": "https://nuxtjs.org/docs",
+      "example_code": "<template> <h1>Hello Nuxt.js</h1> </template>",
+      "tag": ["front end", "javascript", "vue.js"]
+    },
+    {
+      "name": "Fastify",
+      "description": "Fast and low overhead web framework, for Node.js.",
+      "image": "https://www.fastify.io/images/fastify-logo-inverted.0126.svg",
+      "github_stars": 29000,
+      "github": "https://github.com/fastify/fastify",
+      "doc": "https://www.fastify.io/docs/latest/",
+      "example_code": "const fastify = require('fastify')(); fastify.get('/', async (request, reply) => { return { hello: 'world' } });",
+      "tag": ["back end", "node.js", "javascript"]
+    },
+    {
+      "name": "NestJS",
+      "description": "A progressive Node.js framework for building efficient, reliable and scalable server-side applications.",
+      "image": "https://nestjs.com/img/logo-small.svg",
+      "github_stars": 58000,
+      "github": "https://github.com/nestjs/nest",
+      "doc": "https://docs.nestjs.com/",
+      "example_code": "@Controller() export class AppController { @Get() getHello(): string { return this.appService.getHello(); } }",
+      "tag": ["back end", "node.js", "typescript", "javascript"]
+    },
+    {
+      "name": "Symfony",
+      "description": "A set of reusable PHP components and a PHP framework for web projects.",
+      "image": "https://symfony.com/logos/symfony_black_03.svg",
+      "github_stars": 29000,
+      "github": "https://github.com/symfony/symfony",
+      "doc": "https://symfony.com/doc/current/index.html",
+      "example_code": "use Symfony\\Component\\HttpFoundation\\Response; return new Response('Hello, world!');",
+      "tag": ["back end", "php"]
+    },
+    {
+      "name": "Gatsby",
+      "description": "Blazing fast modern site generator for React.",
+      "image": "https://www.gatsbyjs.com/Gatsby-Monogram.svg",
+      "github_stars": 56000,
+      "github": "https://github.com/gatsbyjs/gatsby",
+      "doc": "https://www.gatsbyjs.com/docs/",
+      "example_code": "export default function Home() { return <div>Hello Gatsby!</div>; }",
+      "tag": ["front end", "javascript", "react"]
+    },
+    {
+      "name": "Meteor",
+      "description": "An ultra-simple, database-everywhere, data-on-the-wire, pure-Javascript web framework.",
+      "image": "https://www.meteor.com/assets/favicon/favicon-32x32.png",
+      "github_stars": 44000,
+      "github": "https://github.com/meteor/meteor",
+      "doc": "https://docs.meteor.com/",
+      "example_code": "if (Meteor.isClient) { Template.hello.greeting = function () { return 'Hello, world!'; } }",
+      "tag": ["back end", "front end", "javascript", "node.js"]
+    },
+    {
+      "name": "Phoenix",
+      "description": "A productive web framework that does not compromise speed or maintainability.",
+      "image": "https://www.phoenixframework.org/images/phoenix.png",
+      "github_stars": 20000,
+      "github": "https://github.com/phoenixframework/phoenix",
+      "doc": "https://hexdocs.pm/phoenix/overview.html",
+      "example_code": "defmodule MyAppWeb.PageController do use MyAppWeb, :controller def index(conn, _params) do text(conn, \"Hello, World!\") end end",
+      "tag": ["back end", "elixir"]
+    },
+    {
+      "name": "Koa",
+      "description": "Next generation web framework for Node.js.",
+      "image": "https://koajs.com/public/images/koajs.svg",
+      "github_stars": 34000,
+      "github": "https://github.com/koajs/koa",
+      "doc": "https://koajs.com/",
+      "example_code": "const Koa = require('koa'); const app = new Koa(); app.use(ctx => { ctx.body = 'Hello World'; });",
+      "tag": ["back end", "node.js", "javascript"]
+    },
+    {
+      "name": "Strapi",
+      "description": "The leading open-source headless CMS.",
+      "image": "https://strapi.io/assets/images/strapi-logo-dark.svg",
+      "github_stars": 56000,
+      "github": "https://github.com/strapi/strapi",
+      "doc": "https://docs.strapi.io/",
+      "example_code": "module.exports = { 'index': async ctx => { ctx.send('Hello World!'); } };",
+      "tag": ["back end", "cms", "javascript", "node.js"]
+    }
+  ]
+  
