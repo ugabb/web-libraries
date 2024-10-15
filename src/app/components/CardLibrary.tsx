@@ -5,6 +5,7 @@ import { GoStarFill } from "react-icons/go";
 import { Libs } from "../page";
 import { ExternalLink } from "lucide-react";
 import { indigo } from "tailwindcss/colors";
+import { Badge } from "@/components/ui/badge";
 
 interface CardLibraryProps {
   lib: Libs;
@@ -71,12 +72,11 @@ const CardLibrary = ({ lib }: CardLibraryProps) => {
 
       <div className="flex flex-wrap gap-2">
         {lib.tag.map((tag) => (
-          <span
-            key={tag}
-            className="text-xs font-semibold bg-accent-foreground p-1 rounded-lg text-muted"
+          <Badge
+            key={tag.id}
           >
-            {tag}
-          </span>
+            {tag.name}
+          </Badge>
         ))}
       </div>
     </div>
