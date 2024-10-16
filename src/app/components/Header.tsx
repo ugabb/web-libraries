@@ -1,10 +1,9 @@
 import {
-  Dialog,
-  DialogPanel, PopoverGroup
+  Dialog as DialogH,
+  DialogPanel,
+  PopoverGroup,
 } from "@headlessui/react";
-import {
-  Bars3Icon, XMarkIcon
-} from "@heroicons/react/24/outline";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -15,10 +14,21 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import { Moon, Sun } from "lucide-react";
+import { FilterIcon, Moon, Sun } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 import { useTheme } from "next-themes";
 import { LuLibrary } from "react-icons/lu";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import Link from "next/link";
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -32,10 +42,10 @@ export const Header = () => {
         className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
       >
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
+          <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Web Libraries</span>
             <LuLibrary className="text-3xl text-indigo-500" />
-          </a>
+          </Link>
         </div>
         <div className="flex lg:hidden">
           <button
@@ -47,8 +57,7 @@ export const Header = () => {
             <Bars3Icon aria-hidden="true" className="h-6 w-6" />
           </button>
         </div>
-        <PopoverGroup className="hidden lg:flex lg:gap-x-12">
-
+        <PopoverGroup className="hidden lg:flex lg:gap-x-12 items-center">
           <a
             href="#"
             className="text-sm font-semibold leading-6 text-gray-900 dark:text-foreground"
@@ -67,6 +76,29 @@ export const Header = () => {
           >
             Back End
           </a>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="ghost">
+                Filter
+                <FilterIcon className="size-4 ml-2" />
+              </Button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Filter for libraries</DialogTitle>
+                <DialogDescription>
+                  Filter the libraries by the tags below
+                </DialogDescription>
+                <div>
+                  <div className="flex flex-col gap-3">
+                    <Label>Search for a tag</Label>
+                    <Input />
+                    <Button>Filter</Button>
+                  </div>
+                </div>
+              </DialogHeader>
+            </DialogContent>
+          </Dialog>
           <a
             href="/add-library"
             className="text-sm font-semibold leading-6 text-gray-900 dark:text-foreground"
@@ -74,6 +106,7 @@ export const Header = () => {
             Add Library
           </a>
         </PopoverGroup>
+
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -97,7 +130,7 @@ export const Header = () => {
           </DropdownMenu>
         </div>
       </nav>
-      <Dialog
+      <DialogH
         open={mobileMenuOpen}
         onClose={setMobileMenuOpen}
         className="lg:hidden"
@@ -151,7 +184,7 @@ export const Header = () => {
             </div>
           </div>
         </DialogPanel>
-      </Dialog>
+      </DialogH>
     </header>
   );
 };

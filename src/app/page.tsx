@@ -1,58 +1,54 @@
-"use client";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
-import { Header } from "./components/Header";
-// import libraries from "../../libraries.json";
-import CardLibrary from "./components/CardLibrary";
-import { useEffect, useState } from "react";
-import axios from "axios";
-
-export interface Libs {
-  id?: string;
-  name: string;
-  description: string;
-  image: string;
-  github: string;
-  github_stars: number;
-  doc: string;
-  example_code: string;
-  tag: Tag[];
-}
-
-interface Tag{
-  id: string;
-  name: string;
-  librayId: string;
-}
-
-// const libs: Libs[] = libraries;
-
-export default function Home() {
-  const [libs, setLibs] = useState<Libs[]>([]);
-  async function getLibraries() {
-    try {
-      const { data, status } = await axios.get("/api/library");
-      if (status === 200) {
-        setLibs(data);
-      }
-    } catch (error) {
-      console.error("Error fetching libraries:", error);
-    }
-  }
-
-  useEffect(() => {
-    getLibraries();
-  }, []);
-
+export default function HeroSectionGradientBackground() {
   return (
-    <div className="pb-20">
-      <Header />
-      <main className="flex flex-col gap-5 px-20 mt-20">
-        <div className="flex flex-col gap-5 md:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {libs.map((lib) => (
-            <CardLibrary key={lib.id} lib={lib} />
-          ))}
+    <div className="min-h-screen">
+      {/* Hero */}
+      <div className="relative overflow-hidden py-24 lg:py-32">
+        {/* Gradients */}
+        <div
+          aria-hidden="true"
+          className="flex absolute -top-96 start-1/2 transform -translate-x-1/2"
+        >
+          <div className="bg-gradient-to-r from-background/50 to-background blur-3xl w-[25rem] h-[44rem] rotate-[-60deg] transform -translate-x-[10rem]" />
+          <div className="bg-gradient-to-tl blur-3xl w-[90rem] h-[50rem] rounded-full origin-top-left -rotate-12 -translate-x-[15rem] from-primary-foreground via-primary-foreground to-background" />
         </div>
-      </main>
+        {/* End Gradients */}
+        <div className="relative z-10">
+          <div className="container py-10 lg:py-16">
+            <div className="max-w-2xl text-center mx-auto">
+              <p className="">Find libraries for your web applications</p>
+              {/* Title */}
+              <div className="mt-5 max-w-2xl">
+                <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
+                  Find Library
+                </h1>
+              </div>
+              {/* End Title */}
+              <div className="mt-5 max-w-3xl">
+                <p className="text-xl text-muted-foreground">
+                  Find libraries easily for your web applications. We have a
+                  wide range of libraries for you to choose from.
+                </p>
+              </div>
+              {/* Buttons */}
+              <div className="mt-8 gap-3 flex justify-center">
+                <Link href="/libs">
+                  <Button size={"lg"}>Search For a Lib</Button>
+                </Link>
+                <Link href="/add-library">
+                  <Button size={"lg"} variant={"outline"}>
+                    Add a Lib
+                  </Button>
+                </Link>
+              </div>
+              {/* End Buttons */}
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* End Hero */}
     </div>
   );
 }
