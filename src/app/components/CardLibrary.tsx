@@ -2,10 +2,10 @@ import React from "react";
 import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { GoStarFill } from "react-icons/go";
-import { Libs } from "../page";
 import { ExternalLink } from "lucide-react";
 import { indigo } from "tailwindcss/colors";
 import { Badge } from "@/components/ui/badge";
+import { Libs, Tag } from "../libs/page";
 
 interface CardLibraryProps {
   lib: Libs;
@@ -71,7 +71,7 @@ const CardLibrary = ({ lib }: CardLibraryProps) => {
       </div>
 
       <div className="flex flex-wrap gap-2">
-        {lib.tag.map((tag) => (
+        {lib.tag.map((tag: Tag) => (
           <Badge
             key={tag.id}
           >

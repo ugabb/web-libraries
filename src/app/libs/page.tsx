@@ -17,7 +17,7 @@ export interface Libs {
   tag: Tag[];
 }
 
-interface Tag{
+export interface Tag{
   id: string;
   name: string;
   librayId: string;

@@ -40,7 +40,8 @@ export async function POST(req: Request) {
 
         // Return the created library entry
         return NextResponse.json(newLibrary, { status: 201 });
-    } catch (error) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
         // Handle validation errors and database errors separately
         if (error instanceof z.ZodError) {
             // Validation error
@@ -73,7 +74,9 @@ export async function GET() {
         },
       });
       return NextResponse.json(libraries, { status: 200 });
-    } catch (error) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+        console.log(error)
       return NextResponse.json({ error: "Failed to fetch libraries" }, { status: 500 });
     }
   }
