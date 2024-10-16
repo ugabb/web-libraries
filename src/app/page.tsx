@@ -3,19 +3,19 @@ import Link from "next/link";
 
 export default function HeroSectionGradientBackground() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen mx-auto">
       {/* Hero */}
-      <div className="relative overflow-hidden py-24 lg:py-32">
+      <div className="relative overflow-hidden py-24 lg:py-32 w-full flex justify-center items-center">
         {/* Gradients */}
         <div
           aria-hidden="true"
-          className="flex absolute -top-96 start-1/2 transform -translate-x-1/2"
+          className="flex flex-col absolute -top-96 start-1/2 transform -translate-x-1/2"
         >
           <div className="bg-gradient-to-r from-background/50 to-background blur-3xl w-[25rem] h-[44rem] rotate-[-60deg] transform -translate-x-[10rem]" />
           <div className="bg-gradient-to-tl blur-3xl w-[90rem] h-[50rem] rounded-full origin-top-left -rotate-12 -translate-x-[15rem] from-primary-foreground via-primary-foreground to-background" />
         </div>
         {/* End Gradients */}
-        <div className="relative z-10">
+        <div className="relative z-10 min-h-screen flex flex-col items-center">
           <div className="container py-10 lg:py-16">
             <div className="max-w-2xl text-center mx-auto">
               <p className="">Find libraries for your web applications</p>
@@ -46,6 +46,7 @@ export default function HeroSectionGradientBackground() {
               {/* End Buttons */}
             </div>
           </div>
+          <span className="text-9xl">🕵️</span>
         </div>
       </div>
       {/* End Hero */}
