@@ -15,7 +15,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { Check, ChevronsUpDown } from "lucide-react";
+import { Check, ChevronsUpDown, X } from "lucide-react";
 import {
   Command,
   CommandEmpty,
@@ -72,6 +72,7 @@ const AddLibrary = () => {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm<NewLibrary>({
     resolver: zodResolver(newLibrarySchema),
     defaultValues: {
@@ -84,6 +85,15 @@ const AddLibrary = () => {
       tags: ["frontend", "react", "backend", "zod", "form"],
     },
   });
+
+  const handleAddTag = (tag: string) => {
+    setValueTags([...tags, tag]);
+    setValue("tags", [...tags, tag]);
+  };
+  const handleDeleteTag = (tag: string) => {
+    setValueTags(tags.filter((t) => t !== tag));
+    setValue("tags", tags.filter((t) => t !== tag));
+  }
 
   const router = useRouter();
 
@@ -204,7 +214,11 @@ const AddLibrary = () => {
           <Label htmlFor="tags" className="text-base font-medium">
             Example Code
           </Label>
-          <Textarea placeholder="console.log('Hello World!')" {...register("example_code")} className="h-36" />
+          <Textarea
+            placeholder="console.log('Hello World!')"
+            {...register("example_code")}
+            className="h-36"
+          />
           {errors.tags && <p>{errors.tags.message}</p>}
 
           <Label htmlFor="tags" className="text-base font-medium ">
@@ -237,11 +251,12 @@ const AddLibrary = () => {
                         key={framework.value}
                         value={framework.value}
                         onSelect={(currentValue) => {
-                          setValueTags(
-                            tags.includes(currentValue)
-                              ? tags.filter((tag) => tag !== currentValue)
-                              : [...tags, currentValue]
-                          );
+                          if (tags.includes(currentValue)) {
+                            setValueTags(tags.filter((tag) => tag !== currentValue));
+                            setValue("tags", tags.filter((tag) => tag !== currentValue));
+                          } else {
+                            handleAddTag(currentValue);
+                          }
                           setOpenSelect(false);
                         }}
                       >
@@ -264,11 +279,12 @@ const AddLibrary = () => {
           <div className="flex items-center gap-3 flex-wrap">
             {tags.length > 0 &&
               tags.map((tag) => (
-                <Badge key={tag}>
+                <Badge key={tag} className="flex items-center justify-between gap-1">
                   {
                     tagsExample.find((framework) => framework.value === tag)
                       ?.label
                   }
+                  <X className="size-3 cursor-pointer" onClick={() => handleDeleteTag(tag)} />
                 </Badge>
               ))}
           </div>
