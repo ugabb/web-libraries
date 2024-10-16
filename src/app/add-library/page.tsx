@@ -87,13 +87,22 @@ const AddLibrary = () => {
   });
 
   const handleAddTag = (tag: string) => {
+    if (!tagsExample.find((framework) => framework.value === tag)) {
+      // Add the new tag to the tagsExample array
+      tagsExample.push({ value: tag, label: tag });
+    }
+    // Add the tag to the selected tags state
     setValueTags([...tags, tag]);
     setValue("tags", [...tags, tag]);
   };
+  
   const handleDeleteTag = (tag: string) => {
     setValueTags(tags.filter((t) => t !== tag));
-    setValue("tags", tags.filter((t) => t !== tag));
-  }
+    setValue(
+      "tags",
+      tags.filter((t) => t !== tag)
+    );
+  };
 
   const router = useRouter();
 
@@ -242,7 +251,26 @@ const AddLibrary = () => {
             </PopoverTrigger>
             <PopoverContent className="w-full p-0">
               <Command>
-                <CommandInput placeholder="Search framework..." />
+                <CommandInput
+                  placeholder="Search or add a new tag..."
+                  onKeyDown={(e) => {
+                    const newTag = e.currentTarget.value.trim();
+                    if (e.key === "Enter" && newTag) {
+                      e.preventDefault();
+
+                      // Check if the tag already exists in the array or in the tags
+                      if (
+                        !tags.includes(newTag) &&
+                        !tagsExample.find((t) => t.value === newTag)
+                      ) {
+                        handleAddTag(newTag); // Adds the new custom tag
+                      }
+
+                      // Clear the input after adding the tag
+                      e.currentTarget.value = "";
+                    }
+                  }}
+                />
                 <CommandList>
                   <CommandEmpty>No framework found.</CommandEmpty>
                   <CommandGroup>
@@ -252,8 +280,13 @@ const AddLibrary = () => {
                         value={framework.value}
                         onSelect={(currentValue) => {
                           if (tags.includes(currentValue)) {
-                            setValueTags(tags.filter((tag) => tag !== currentValue));
-                            setValue("tags", tags.filter((tag) => tag !== currentValue));
+                            setValueTags(
+                              tags.filter((tag) => tag !== currentValue)
+                            );
+                            setValue(
+                              "tags",
+                              tags.filter((tag) => tag !== currentValue)
+                            );
                           } else {
                             handleAddTag(currentValue);
                           }
@@ -279,12 +312,18 @@ const AddLibrary = () => {
           <div className="flex items-center gap-3 flex-wrap">
             {tags.length > 0 &&
               tags.map((tag) => (
-                <Badge key={tag} className="flex items-center justify-between gap-1">
+                <Badge
+                  key={tag}
+                  className="flex items-center justify-between gap-1"
+                >
                   {
                     tagsExample.find((framework) => framework.value === tag)
                       ?.label
                   }
-                  <X className="size-3 cursor-pointer" onClick={() => handleDeleteTag(tag)} />
+                  <X
+                    className="size-3 cursor-pointer"
+                    onClick={() => handleDeleteTag(tag)}
+                  />
                 </Badge>
               ))}
           </div>
