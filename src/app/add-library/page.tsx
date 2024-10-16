@@ -9,6 +9,47 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Check, ChevronsUpDown } from "lucide-react";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command";
+import { cn } from "@/lib/utils";
+import { Badge } from "@/components/ui/badge";
+import { Textarea } from "@/components/ui/textarea";
+
+const tagsExample = [
+  {
+    value: "frontend",
+    label: "Frontend",
+  },
+  {
+    value: "backend",
+    label: "Backend",
+  },
+  {
+    value: "framework",
+    label: "Framework",
+  },
+  {
+    value: "react",
+    label: "React",
+  },
+  {
+    value: "astro",
+    label: "Astro",
+  },
+];
 
 const newLibrarySchema = z.object({
   name: z.string(),
@@ -24,6 +65,9 @@ const newLibrarySchema = z.object({
 type NewLibrary = z.infer<typeof newLibrarySchema>;
 
 const AddLibrary = () => {
+  const [openSelect, setOpenSelect] = useState(false);
+  const [tags, setValueTags] = useState<string[]>([]);
+
   const {
     register,
     handleSubmit,
@@ -44,8 +88,16 @@ const AddLibrary = () => {
   const router = useRouter();
 
   const onSubmit = async (formdata: NewLibrary) => {
-    const { name, description, image, github, github_stars, doc, tags, example_code } =
-      formdata;
+    const {
+      name,
+      description,
+      image,
+      github,
+      github_stars,
+      doc,
+      tags,
+      example_code,
+    } = formdata;
     try {
       const { status } = await axios.post("/api/library", {
         name,
@@ -55,7 +107,7 @@ const AddLibrary = () => {
         github_stars,
         doc,
         tags,
-        example_code
+        example_code,
       });
 
       if (status === 201) {
@@ -91,7 +143,7 @@ const AddLibrary = () => {
           </Label>
           <Input
             type="text"
-            placeholder="Library name"
+            placeholder="React"
             id="name"
             {...register("name")} // Register input
           />
@@ -102,7 +154,7 @@ const AddLibrary = () => {
           </Label>
           <Input
             type="text"
-            placeholder="Library description"
+            placeholder="Frontend library for building user interfaces"
             {...register("description")} // Register input
           />
           {errors.description && <p>{errors.description.message}</p>}
@@ -112,7 +164,7 @@ const AddLibrary = () => {
           </Label>
           <Input
             type="text"
-            placeholder="Library image"
+            placeholder="https://example.com/image.png"
             {...register("image")} // Register input
           />
           {errors.image && <p>{errors.image.message}</p>}
@@ -126,39 +178,100 @@ const AddLibrary = () => {
             {...register("github")} // Register input
           />
           {errors.github && <p>{errors.github.message}</p>}
-        </div>
 
-        <div className="w-full flex flex-col gap-5">
           <Label htmlFor="github_stars" className="text-base font-medium ">
             Library stars
           </Label>
           <Input
             type="number"
-            placeholder="Library stars"
+            placeholder="50"
             {...register("github_stars")} // Register input
           />
           {errors.github_stars && <p>{errors.github_stars.message}</p>}
+        </div>
 
+        <div className="w-full flex flex-col gap-5">
           <Label htmlFor="doc" className="text-base font-medium ">
             Library documentation
           </Label>
           <Input
             type="text"
-            placeholder="Library documentation"
+            placeholder="https://example.com/doc"
             {...register("doc")} // Register input
           />
           {errors.doc && <p>{errors.doc.message}</p>}
 
-          <Label htmlFor="tags" className="text-base font-medium ">
-            Library tags
+          <Label htmlFor="tags" className="text-base font-medium">
+            Example Code
           </Label>
-          <Input type="text" placeholder="Library tags" />
+          <Textarea placeholder="console.log('Hello World!')" {...register("example_code")} className="h-36" />
           {errors.tags && <p>{errors.tags.message}</p>}
 
           <Label htmlFor="tags" className="text-base font-medium ">
-            Example Code
+            Tags
           </Label>
-          <Input type="text" placeholder="example code" {...register("example_code")} />
+          <Popover open={openSelect} onOpenChange={setOpenSelect}>
+            <PopoverTrigger asChild>
+              <Button
+                variant="outline"
+                role="combobox"
+                aria-expanded={openSelect}
+                className="w-full justify-between"
+              >
+                {tags.length > 0
+                  ? tagsExample.find((framework) =>
+                      tags.includes(framework.value)
+                    )?.label
+                  : "Select a tag do describe your library"}
+                <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-full p-0">
+              <Command>
+                <CommandInput placeholder="Search framework..." />
+                <CommandList>
+                  <CommandEmpty>No framework found.</CommandEmpty>
+                  <CommandGroup>
+                    {tagsExample.map((framework) => (
+                      <CommandItem
+                        key={framework.value}
+                        value={framework.value}
+                        onSelect={(currentValue) => {
+                          setValueTags(
+                            tags.includes(currentValue)
+                              ? tags.filter((tag) => tag !== currentValue)
+                              : [...tags, currentValue]
+                          );
+                          setOpenSelect(false);
+                        }}
+                      >
+                        <Check
+                          className={cn(
+                            "mr-2 h-4 w-4",
+                            tags.find((tag) => tag === framework.value)
+                              ? "opacity-100"
+                              : "opacity-0"
+                          )}
+                        />
+                        {framework.label}
+                      </CommandItem>
+                    ))}
+                  </CommandGroup>
+                </CommandList>
+              </Command>
+            </PopoverContent>
+          </Popover>
+          <div className="flex items-center gap-3 flex-wrap">
+            {tags.length > 0 &&
+              tags.map((tag) => (
+                <Badge key={tag}>
+                  {
+                    tagsExample.find((framework) => framework.value === tag)
+                      ?.label
+                  }
+                </Badge>
+              ))}
+          </div>
           {errors.tags && <p>{errors.tags.message}</p>}
         </div>
       </div>
