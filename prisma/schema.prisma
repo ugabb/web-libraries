@@ -6,12 +6,12 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
 model Library {
-  id           String @id @default(uuid())
+  id           String @id @default(uuid()) @map("_id")
   name         String
   description  String
   image        String
@@ -23,7 +23,7 @@ model Library {
 }
 
 model Tag {
-  id   String @id @default(uuid())
+  id   String @id @default(uuid()) @map("_id")
   name String
 
   Library   Library? @relation(fields: [libraryId], references: [id])
