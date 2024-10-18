@@ -14,21 +14,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import { FilterIcon, Moon, Sun } from "lucide-react";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import { Moon, Sun } from "lucide-react";
 
 import { useTheme } from "next-themes";
 import { LuLibrary } from "react-icons/lu";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import FilterModal from "./FilterModal";
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -76,29 +67,7 @@ export const Header = () => {
           >
             Back End
           </a>
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button variant="ghost">
-                Filter
-                <FilterIcon className="size-4 ml-2" />
-              </Button>
-            </DialogTrigger>
-            <DialogContent>
-              <DialogHeader>
-                <DialogTitle>Filter for libraries</DialogTitle>
-                <DialogDescription>
-                  Filter the libraries by the tags below
-                </DialogDescription>
-                <div>
-                  <div className="flex flex-col gap-3">
-                    <Label>Search for a tag</Label>
-                    <Input />
-                    <Button>Filter</Button>
-                  </div>
-                </div>
-              </DialogHeader>
-            </DialogContent>
-          </Dialog>
+          <FilterModal />
           <a
             href="/add-library"
             className="text-sm font-semibold leading-6 text-gray-900 dark:text-foreground"

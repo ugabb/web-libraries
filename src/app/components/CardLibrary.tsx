@@ -6,6 +6,7 @@ import { ExternalLink } from "lucide-react";
 import { indigo } from "tailwindcss/colors";
 import { Badge } from "@/components/ui/badge";
 import { Libs, Tag } from "../libs/page";
+import Image from "next/image";
 
 interface CardLibraryProps {
   lib: Libs;
@@ -19,10 +20,12 @@ const CardLibrary = ({ lib }: CardLibraryProps) => {
     >
       <div className="flex items-center gap-2">
         <div className="flex flex-col gap-1 ">
-          <img
+          <Image
             src={lib.image}
             alt={lib.name}
             className="w-12 h-12 object-cover rounded-full bg-foreground"
+            width={500}
+            height={500}
           />
           <h2 className="text-lg font-semibold">{lib.name}</h2>
           <p className="text-sm text-gray-600">{lib.description}</p>
