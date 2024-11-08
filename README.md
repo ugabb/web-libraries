@@ -47,6 +47,22 @@ Este projeto tem como objetivo criar uma plataforma centralizada que simplifique
     * **Adicionem Novas Bibliotecas:** Contribuam para o banco de dados sugerindo e adicionando novas bibliotecas.
     * **Melhorem Entradas Existentes:** Aprimore entradas de bibliotecas existentes com informações adicionais, exemplos ou documentação.
 
+
+## 🛠 Tecnologias
+
+Essas são as principais tecnologias usadas no projeto:
+
+| Tecnologia  | Ícone                                                                                                                                      |
+|-------------|---------------------------------------------------------------------------------------------------------------------------------------------|
+| Next.js     | ![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)                                   |
+| JavaScript  | ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)                          |
+| TypeScript  | ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)                          |
+| TailwindCSS | ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)                    |
+| Prisma      | ![Prisma](https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge&logo=prisma&logoColor=white)                                      |
+| MongoDB     | ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)                                   |
+
+
+
 1.  **Clone o Repositório:**
     ```bash
     git clone https://github.com/ugabb/web-libraries.git
