@@ -49,7 +49,7 @@ export const Header = () => {
           </button>
         </div>
         <PopoverGroup className="hidden lg:flex lg:gap-x-12 items-center">
-          <a
+          {/* <a
             href="#"
             className="text-sm font-semibold leading-6 text-gray-900 dark:text-foreground"
           >
@@ -66,7 +66,7 @@ export const Header = () => {
             className="text-sm font-semibold leading-6 text-gray-900 dark:text-foreground"
           >
             Back End
-          </a>
+          </a> */}
           <FilterModal />
           <a
             href="/add-library"
