@@ -1,9 +1,13 @@
 # Web Libraries
 
+Gabriel Silva Barros - 30349044
+Gustavo Tiburcio - 26052130
+Lucca de carvalho - 25967681
+
 ## A Comprehensive Hub for Web Development Resources
 https://web-libraries.vercel.app/
 
-![image](https://github.com/user-attachments/assets/8e96565b-9f3b-4c1c-ba6a-afee39d6cad3)
+![image](https://github.com/user-attachments/assets/8e96565b-9f3b-4c1c-ba6a-afee39d6cad3)    
 
 
 This project aims to create a centralized platform that simplifies the process of discovering and utilizing essential web libraries for developers and computer science students. By aggregating a vast collection of libraries, we aim to streamline the development workflow and foster innovation.
